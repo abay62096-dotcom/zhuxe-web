@@ -39,13 +39,6 @@ export default defineConfig({
         ]
       },
       {
-        text: 'Lanjutan',
-        items: [
-          { text: 'Plugin', link: '/advanced/plugins' },
-          { text: 'VoIP (Panggilan)', link: '/advanced/voip' }
-        ]
-      },
-      {
         text: 'Lainnya',
         items: [
           { text: 'FAQ', link: '/guide/faq' },
