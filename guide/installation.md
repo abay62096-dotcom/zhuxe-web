@@ -1,37 +1,40 @@
-# Panduan Instalasi
+# Instalasi
 
-Untuk menjalankan **Zhuxe Asistance**, pastikan sistem Anda memenuhi persyaratan minimum berikut.
+## Buat project
 
-## Persyaratan Sistem
-- **Node.js**: Versi 20.9.0 atau yang lebih baru.
-- **Package Manager**: `npm`, `pnpm`, atau `yarn`.
-- **Sistem Operasi**: Linux (Ubuntu/Debian sangat direkomendasikan untuk VPS), macOS, atau Windows (via WSL).
+```bash
+mkdir bot-zhuxe-saya
+cd bot-zhuxe-saya
+npm init -y
+```
 
-## 1. Instalasi Package Inti
-Buka terminal server Anda, buat folder proyek baru, dan inisialisasi:
+## Pasang library utama
 
-    mkdir bot-zhuxe-saya
-    cd bot-zhuxe-saya
-    npm init -y
+```bash
+npm install zhuxe-assistance
+```
 
-Setelah itu, pasang library utama Zhuxe:
+## Pasang penyimpanan sesi
 
-    npm install zhuxe-assistance
+Contoh dengan SQLite. Backend lain ada di [Penyimpanan Data](/concepts/stores).
 
-## 2. Instalasi Database (Sangat Direkomendasikan)
-Secara default, Zhuxe akan menyimpan sesi di memori (akan hilang jika bot di-restart). Agar bot Anda tetap *login* (tidak perlu scan ulang), Anda wajib menggunakan database.
+```bash
+npm install @zhuxe-js/store-sqlite better-sqlite3
+```
 
-Contoh menggunakan SQLite (ringan dan tidak butuh server database terpisah):
+## Pasang modul media (opsional)
 
-    npm install @zhuxe-js/store-sqlite better-sqlite3
+```bash
+npm install @zhuxe-js/media-utils sharp
+```
 
-## 3. Instalasi Fitur Tambahan (Opsional)
-Jika Anda ingin bot bisa memproses gambar, membuat stiker, atau mengirim pesan suara, pasang modul media:
+::: tip Error `node-gyp` atau `python`?
+Pasang alat build, lalu ulangi instalasi:
 
-    npm install @zhuxe-js/media-utils sharp
+```bash
+sudo apt update
+sudo apt install -y build-essential python3
+```
+:::
 
-## Troubleshooting (Jika Gagal)
-Jika saat `npm install` Anda melihat error terkait `node-gyp` atau `python`, pastikan server Anda memiliki *build tools*:
-
-    sudo apt update
-    sudo apt install -y build-essential python3
+Lanjut ke [Mulai Cepat](/guide/quickstart).

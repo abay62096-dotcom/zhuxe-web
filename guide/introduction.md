@@ -1,10 +1,21 @@
 # Pengenalan
 
-**Zhuxe Asistance** adalah library TypeScript berperforma tinggi untuk implementasi protokol WhatsApp Web. Library ini dirancang untuk menangani beban kerja berskala besar (*high-scalability*), operasi multi-sesi, dan konfigurasi pengguna yang sepenuhnya dapat disesuaikan.
+**Zhuxe Asistance** adalah implementasi protokol WhatsApp Web berbasis TypeScript yang dirancang untuk beban kerja berskala besar.
 
-## Fitur Utama
-- **Multi-Sesi**: Mengelola banyak akun WhatsApp dalam satu proses.
-- **Event-Driven**: Merespons pesan, status, dan koneksi secara *real-time*.
-- **Plug-and-Play**: Dilengkapi dengan sistem plugin untuk VoIP, pengelolaan media, dan database.
+## Fitur
 
-> **Disclaimer**: Proyek ini adalah implementasi independen untuk tujuan riset dan interoperabilitas. Proyek ini tidak berafiliasi dengan atau didukung oleh WhatsApp.
+- Pesan teks dan media
+- Grup dan buletin (newsletter)
+- Panggilan suara dan video (VoIP)
+- Banyak akun dalam satu proses
+- Sistem plugin
+- Penyimpanan data fleksibel: SQLite, PostgreSQL, MySQL, Redis, MongoDB
+
+## Lisensi
+
+MIT.
+
+<div class="cards">
+  <a class="card" href="/guide/installation"><div class="ic">🚀</div><div class="t">Instalasi</div><div class="d">Mulai dari nol.</div></a>
+  <a class="card" href="/concepts/stores"><div class="ic">🗄️</div><div class="t">Store</div><div class="d">Simpan sesi agar tidak scan QR berulang.</div></a>
+</div>
