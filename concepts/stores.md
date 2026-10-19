@@ -1,36 +1,50 @@
 # Penyimpanan Data (Store)
 
-Secara default, Zhuxe Asistance menyimpan data sesi di memori, sehingga hilang saat bot di-restart. Supaya bot tetap *login* dan tidak perlu *scan* QR setiap kali menyala, kamu **wajib** memakai database persisten (Store).
+Secara default, data sesi hanya di memori dan **hilang saat bot di-restart**. Supaya bot tetap *login* dan tidak perlu scan QR setiap kali menyala, pakai store persisten.
 
-Pilih satu backend, pasang paketnya, lalu atur di `createStore`.
+Cara kerjanya: `createStore` menerima **backends** (database yang dipakai) dan **providers** (jenis data mana disimpan di backend mana).
 
-::: warning Perlu dicek
-Hanya `@zhuxe-js/store-sqlite` yang tercantum di halaman Instalasi. Pastikan paket backend lain memang ada di npm sebelum dokumen ini dipublikasikan.
+## Pilih backend
+
+| Store | Paket | Cocok untuk | Server terpisah |
+|-------|-------|-------------|:---------------:|
+| SQLite | `@zhuxe-js/store-sqlite` | Pemula, bot kecil sampai menengah | Tidak |
+| PostgreSQL | `@zhuxe-js/store-postgres` | Trafik tinggi, integritas data kuat | Ya |
+| MySQL / MariaDB | `@zhuxe-js/store-mysql` | Aplikasi web dan bot pada umumnya | Ya |
+| MongoDB | `@zhuxe-js/store-mongo` | Data dengan struktur yang sering berubah | Ya |
+| Redis | `@zhuxe-js/store-redis` | Respons sangat cepat, cache | Ya |
+
+## Daftar provider
+
+| Provider | Isi |
+|----------|-----|
+| `auth` | Kredensial login |
+| `signal` | Data protokol Signal |
+| `preKey` | Pre-key |
+| `session` | Sesi enkripsi |
+| `identity` | Identitas kontak |
+| `senderKey` | Kunci pengirim untuk grup |
+| `appState` | Sinkronisasi app state |
+| `privacyToken` | Token privasi |
+| `messages` | Arsip pesan |
+| `threads` | Daftar percakapan |
+| `contacts` | Daftar kontak |
+
+::: tip Melewati data tertentu
+Untuk `messages`, `threads`, dan `contacts`, isi dengan `'none'` kalau kamu tidak butuh arsipnya. Untuk tes, backend `'memory'` juga bisa dipakai pada provider tertentu (lihat [Pengujian](/advanced/testing)).
 :::
 
-## Pilih yang mana?
+## Konfigurasi per backend
 
-| Store | Cocok untuk | Server terpisah |
-|-------|-------------|:---------------:|
-| SQLite | Pemula, bot kecil sampai menengah | Tidak |
-| PostgreSQL | Trafik tinggi, integritas data kuat | Ya |
-| MySQL / MariaDB | Aplikasi web dan bot pada umumnya | Ya |
-| MongoDB | Data dengan struktur yang sering berubah | Ya |
-| Redis | Respons sangat cepat, cache | Ya |
-
-## Konfigurasi
-
-Semua backend memakai bentuk `createStore` yang sama. Pilih tab sesuai database-mu.
+Semua backend memakai bentuk `createStore` yang sama. Contoh di bawah menulis empat provider inti supaya ringkas. Untuk bot sungguhan, isi semua provider di tabel atas seperti pada [Mulai Cepat](/guide/quickstart).
 
 ### SQLite
 
-**Instalasi**
+Ringan dan tanpa server database terpisah. Rekomendasi untuk pemula.
 
 ```bash
 npm install @zhuxe-js/store-sqlite better-sqlite3
 ```
-
-**Konfigurasi**
 
 ```javascript
 import { createStore } from 'zhuxe-assistance'
@@ -51,13 +65,11 @@ const store = createStore({
 
 ### PostgreSQL
 
-**Instalasi**
+Cocok untuk trafik tinggi dan integritas data yang kuat.
 
 ```bash
 npm install @zhuxe-js/store-postgres pg
 ```
-
-**Konfigurasi**
 
 ```javascript
 import { createStore } from 'zhuxe-assistance'
@@ -80,13 +92,11 @@ const store = createStore({
 
 ### MySQL / MariaDB
 
-**Instalasi**
+Pilihan klasik untuk aplikasi web dan bot.
 
 ```bash
 npm install @zhuxe-js/store-mysql mysql2
 ```
-
-**Konfigurasi**
 
 ```javascript
 import { createStore } from 'zhuxe-assistance'
@@ -112,13 +122,11 @@ const store = createStore({
 
 ### MongoDB
 
-**Instalasi**
+Fleksibel untuk data yang strukturnya sering berubah. Memakai TTL index.
 
 ```bash
 npm install @zhuxe-js/store-mongo mongodb
 ```
-
-**Konfigurasi**
 
 ```javascript
 import { createStore } from 'zhuxe-assistance'
@@ -142,13 +150,11 @@ const store = createStore({
 
 ### Redis
 
-**Instalasi**
+Sangat cepat, dengan eviksi berbasis TTL. Cocok untuk cache dan bot yang butuh respons cepat.
 
 ```bash
 npm install @zhuxe-js/store-redis ioredis
 ```
-
-**Konfigurasi**
 
 ```javascript
 import { createStore } from 'zhuxe-assistance'
@@ -167,3 +173,10 @@ const store = createStore({
 })
 ```
 
+::: warning Opsi backend
+Nama paket dan penamaan provider sudah sesuai README. Opsi koneksi untuk PostgreSQL, MySQL, MongoDB, dan Redis di atas mengikuti pola umum drivernya, jadi cocokkan dengan README paket masing-masing bila ada yang berbeda.
+:::
+
+## Campur backend
+
+Tiap provider bisa memakai backend berbeda, misalnya data sesi di SQLite dan cache di Redis. Definisikan dua backend di `backends`, lalu arahkan tiap provider ke nama yang dipilih.

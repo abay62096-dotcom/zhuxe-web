@@ -15,6 +15,7 @@ export default defineConfig({
       { text: 'Panduan', link: '/guide/introduction', activeMatch: '/guide/' },
       { text: 'Konsep', link: '/concepts/stores', activeMatch: '/concepts/' },
       { text: 'API', link: '/api/client', activeMatch: '/api/' },
+      { text: 'Lanjutan', link: '/advanced/media', activeMatch: '/advanced/' },
       { text: 'FAQ', link: '/guide/faq' }
     ],
     sidebar: [
@@ -28,7 +29,11 @@ export default defineConfig({
       },
       {
         text: 'Konsep',
-        items: [{ text: 'Penyimpanan Data (Store)', link: '/concepts/stores' }]
+        items: [
+          { text: 'Penyimpanan Data (Store)', link: '/concepts/stores' },
+          { text: 'Event', link: '/concepts/events' },
+          { text: 'Daftar Paket', link: '/concepts/packages' }
+        ]
       },
       {
         text: 'API',
@@ -39,6 +44,16 @@ export default defineConfig({
         ]
       },
       {
+        text: 'Lanjutan',
+        items: [
+          { text: 'Plugin', link: '/advanced/plugins' },
+          { text: 'VoIP (Panggilan)', link: '/advanced/voip' },
+          { text: 'Media', link: '/advanced/media' },
+          { text: 'Pengujian', link: '/advanced/testing' },
+          { text: 'MCP Server', link: '/advanced/mcp' }
+        ]
+      },
+      {
         text: 'Lainnya',
         items: [
           { text: 'FAQ', link: '/guide/faq' },
@@ -46,7 +61,7 @@ export default defineConfig({
         ]
       }
     ],
-    socialLinks: [{ icon: 'github', link: 'https://github.com/' }],
+    socialLinks: [{ icon: 'github', link: 'https://github.com/abay62096-dotcom/zhuxe' }],
     search: {
       provider: 'local',
       options: {
@@ -66,7 +81,7 @@ export default defineConfig({
     sidebarMenuLabel: 'Menu',
     returnToTopLabel: 'Kembali ke atas',
     lastUpdated: { text: 'Diperbarui' },
-    editLink: { pattern: 'https://github.com/USERNAME/REPO/edit/main/:path', text: 'Edit halaman ini' },
+    editLink: { pattern: 'https://github.com/abay62096-dotcom/zhuxe-web/edit/main/:path', text: 'Edit halaman ini' },
     footer: { message: 'Dirilis dengan lisensi MIT.', copyright: 'Zhuxe Asistance' }
   }
 })
