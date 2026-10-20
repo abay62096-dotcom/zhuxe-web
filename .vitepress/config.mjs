@@ -7,9 +7,9 @@ export default defineConfig({
   cleanUrls: true,
   lastUpdated: true,
   appearance: true,
-  head: [['link', { rel: 'icon', href: '/logo.svg' }]],
+  head: [['link', { rel: 'icon', href: 'https://files.catbox.moe/688ddx.png' }]],
   themeConfig: {
-    logo: '/logo.svg',
+    logo: 'https://files.catbox.moe/688ddx.png',
     siteTitle: 'Zhuxe Asistance',
     nav: [
       { text: 'Panduan', link: '/guide/introduction', activeMatch: '/guide/' },
@@ -24,7 +24,8 @@ export default defineConfig({
         items: [
           { text: 'Pengenalan', link: '/guide/introduction' },
           { text: 'Instalasi', link: '/guide/installation' },
-          { text: 'Mulai Cepat', link: '/guide/quickstart' }
+          { text: 'Mulai Cepat', link: '/guide/quickstart' },
+          { text: 'Contoh', link: '/guide/examples' }
         ]
       },
       {
@@ -40,7 +41,8 @@ export default defineConfig({
         items: [
           { text: 'WaClient', link: '/api/client' },
           { text: 'Pesan', link: '/api/messages' },
-          { text: 'Grup', link: '/api/groups' }
+          { text: 'Grup', link: '/api/groups' },
+          { text: 'Newsletter', link: '/api/newsletters' }
         ]
       },
       {

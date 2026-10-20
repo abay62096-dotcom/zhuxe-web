@@ -1,0 +1,20 @@
+# Zhuxe Asistance
+> Library TypeScript untuk protokol WhatsApp Web (fork zapo-js, MIT). Paket: zhuxe-assistance.
+
+- /guide/introduction: pengenalan
+- /guide/installation: instalasi
+- /guide/quickstart: bot pertama
+- /guide/architecture: arsitektur
+- /guide/examples: contoh
+- /concepts/stores: store
+- /concepts/events: event
+- /concepts/packages: daftar paket
+- /api/client: WaClient
+- /api/messages: pesan
+- /api/groups: grup
+- /api/newsletters: newsletter
+- /advanced/plugins: plugin
+- /advanced/voip: panggilan suara
+- /advanced/media: media
+- /advanced/testing: pengujian
+- /advanced/mcp: MCP server
