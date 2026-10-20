@@ -7,9 +7,9 @@ export default defineConfig({
   cleanUrls: true,
   lastUpdated: true,
   appearance: true,
-  head: [['link', { rel: 'icon', href: 'https://files.catbox.moe/688ddx.png' }]],
+  head: [['link', { rel: 'icon', href: '/logo.png' }]],
   themeConfig: {
-    logo: 'https://files.catbox.moe/688ddx.png',
+    logo: '/logo.png',
     siteTitle: 'Zhuxe Asistance',
     nav: [
       { text: 'Panduan', link: '/guide/introduction', activeMatch: '/guide/' },
